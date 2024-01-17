@@ -2,6 +2,34 @@
   "title": "Tab : use only keyboard core area, author: Lin",
   "rules": [
     {
+      "description": "Tab + spacebar = return_or_enter",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "name": "tab pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ],
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "return_or_enter"
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
       "description": "Tab + number: F1 ~ F12",
       "manipulators": [
         {
@@ -15,7 +43,9 @@
           "from": {
             "key_code": "1",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -36,7 +66,9 @@
           "from": {
             "key_code": "2",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -57,7 +89,9 @@
           "from": {
             "key_code": "3",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -78,7 +112,9 @@
           "from": {
             "key_code": "4",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -99,7 +135,9 @@
           "from": {
             "key_code": "5",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -120,7 +158,9 @@
           "from": {
             "key_code": "6",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -141,7 +181,9 @@
           "from": {
             "key_code": "7",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -162,7 +204,9 @@
           "from": {
             "key_code": "8",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -183,7 +227,9 @@
           "from": {
             "key_code": "9",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -204,7 +250,9 @@
           "from": {
             "key_code": "0",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -225,7 +273,9 @@
           "from": {
             "key_code": "hyphen",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -246,7 +296,9 @@
           "from": {
             "key_code": "equal_sign",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -272,7 +324,9 @@
           "from": {
             "key_code": "delete_or_backspace",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -286,7 +340,9 @@
           "from": {
             "key_code": "tab",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "parameters": {
@@ -332,7 +388,9 @@
           "from": {
             "key_code": "j",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -353,7 +411,9 @@
           "from": {
             "key_code": "k",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -374,7 +434,9 @@
           "from": {
             "key_code": "h",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -395,7 +457,9 @@
           "from": {
             "key_code": "l",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
@@ -409,7 +473,9 @@
           "from": {
             "key_code": "tab",
             "modifiers": {
-              "optional": ["any"]
+              "optional": [
+                "any"
+              ]
             }
           },
           "parameters": {
