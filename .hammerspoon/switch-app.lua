@@ -1,4 +1,4 @@
-require("keyboard") -- Load Hammerspoon bits from https://github.com/jasonrudolph/keyboard
+-- require("keyboard") -- Load Hammerspoon bits from https://github.com/jasonrudolph/keyboard
 
 local application = require("hs.application")
 local window = require("hs.window")
@@ -63,7 +63,7 @@ local key2App = {
 	f = "Finder",
 	-- g used --center babe
 	-- h = '',
-	-- i
+	i = "IntelliJ IDEA",
 	-- j = "Spotify",
 	-- k = "",
 	-- l = 'Dictionary',
@@ -78,7 +78,7 @@ local key2App = {
 
 	t = "TablePlus", -- t for term
 	-- u
-	v = "Postman",
+	v = "Visual Studio Code",
 	w = "WeChat",
 	x = "Sublime Text",
 	-- y = 'Dictionary',
