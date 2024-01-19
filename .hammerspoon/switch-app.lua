@@ -43,25 +43,26 @@ local gocenter = { x = 1, y = 1, w = 4, h = 4 }
 local gobig = { x = 0, y = 0, w = gw, h = gh }
 
 -- 中心 小中心 大全屏
-hotkey.bind(hyper, "G", function()
-	grid.set(window.focusedWindow(), gomiddle)
-end)
-hotkey.bind(hyper, "H", function()
+
+hotkey.bind(hyper, "1", function()
 	grid.set(window.focusedWindow(), gocenter)
 end)
-hotkey.bind(hyper, "O", function()
+hotkey.bind(hyper, "2", function()
+	grid.set(window.focusedWindow(), gomiddle)
+end)
+hotkey.bind(hyper, "3", function()
 	grid.set(window.focusedWindow(), gobig)
 end)
 
 -- this part is for open or focus app windows
 local key2App = {
 	--a = '',
-	-- b = "Google Chrome", -- b for browser
-	c = "Google Chrome", --vscode
+	b = "Postman", -- b for browser
+	-- c = "Google Chrome", --vscode
 	d = "PyCharm", -- d for dict
 	e = "iTerm2", -- e for editor
-	f = "Finder",
-	-- g used --center babe
+	f = "Google Chrome",
+	-- g = "Google Chrome", -- used --center babe
 	-- h = '',
 	i = "IntelliJ IDEA",
 	-- j = "Spotify",
@@ -69,9 +70,9 @@ local key2App = {
 	-- l = 'Dictionary',
 	m = "Messages", -- m for music
 	-- n = "NetNewsWires",
-	-- o used --max babe
-	-- p = "PyCharm",
-	-- q = "QSpace",
+	o = "Typora", -- used --max babe
+	-- p = "Postman",
+	q = "Termius",
 	r = "Obsidian",
 	-- s = "TablePlus",
 	s = "System Preferences",
