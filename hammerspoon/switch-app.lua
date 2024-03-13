@@ -56,12 +56,12 @@ end)
 
 -- this part is for open or focus app windows
 local key2App = {
-	--a = '',
-	b = "Postman", -- b for browser
-	-- c = "Google Chrome", --vscode
-	d = "PyCharm", -- d for dict
+	a = "Apifox",
+	b = "豆包", -- b for browser
+	c = "Google Chrome", --vscode
+	-- d = "PyCharm", -- d for dict
 	e = "iTerm2", -- e for editor
-	f = "Google Chrome",
+	-- f = "Google Chrome",
 	-- g = "Google Chrome", -- used --center babe
 	-- h = '',
 	i = "IntelliJ IDEA",
@@ -69,19 +69,20 @@ local key2App = {
 	-- k = "",
 	-- l = 'Dictionary',
 	m = "Messages", -- m for music
-	-- n = "NetNewsWires",
+	n = "Navicat Premium",
 	o = "Typora", -- used --max babe
-	-- p = "Postman",
-	q = "Termius",
+	p = "PyCharm",
+	-- q = "Termius",
+	q = "Postman",
 	r = "Obsidian",
-	-- s = "TablePlus",
-	s = "System Preferences",
+	s = "TablePlus",
+	-- s = "System Preferences",
 
-	t = "TablePlus", -- t for term
+	-- t = "TablePlus", -- t for term
 	-- u
 	v = "Visual Studio Code",
 	w = "WeChat",
-	x = "Sublime Text",
+	x = "Termius",
 	-- y = 'Dictionary',
 	-- z = "iTerm2",
 }
