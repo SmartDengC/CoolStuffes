@@ -59,9 +59,9 @@ local key2App = {
 	a = "Apifox",
 	b = "豆包", -- b for browser
 	c = "Google Chrome", --vscode
-	-- d = "PyCharm", -- d for dict
+	d = "TablePlus", -- d for dict
 	e = "iTerm2", -- e for editor
-	-- f = "Google Chrome",
+	-- f = "WPS office",
 	-- g = "Google Chrome", -- used --center babe
 	-- h = '',
 	i = "IntelliJ IDEA",
@@ -69,22 +69,22 @@ local key2App = {
 	-- k = "",
 	-- l = 'Dictionary',
 	m = "Messages", -- m for music
-	n = "Navicat Premium",
+	n = "时钟",
 	o = "Typora", -- used --max babe
 	p = "PyCharm",
 	-- q = "Termius",
 	q = "Postman",
 	r = "Obsidian",
-	s = "TablePlus",
+	s = "Navicat Premium",
 	-- s = "System Preferences",
 
 	-- t = "TablePlus", -- t for term
-	-- u
+	-- u = "WPS office",
 	v = "Visual Studio Code",
 	w = "WeChat",
 	x = "Termius",
 	-- y = 'Dictionary',
-	-- z = "iTerm2",
+	z = "WPS Office",
 }
 
 for key, app in pairs(key2App) do
