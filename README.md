@@ -10,7 +10,7 @@ Please give a little start if you found it useful, because some of them spend me
 
 ## Backup Description
 
-### 备份与恢复hammerspoon的配置
+### 1、备份与恢复hammerspoon的配置
 
 hammerspoon的配置文件在家目录的`.hammerspoon`下面，备份与恢复的时候只需要把这个文件下面的所有内容拷贝或者替换调就可以。
 
@@ -27,7 +27,17 @@ README.md   hammerspoon karabiner
 cp -r ~/.hammerspoon/* ./hammerspoon
 ```
 
-### 备份与恢复karabiner的配置
+### 2、备份与恢复karabiner的配置
 
+karabiner同理，karabiner的配置文件在家目录的`.config`下面.
 
+```shell
+(base) ➜ CoolStuffes (main) ✔ pwd   // 当前所处的目录
+/Users/dengc4r/c4r_git/CoolStuffes
+
+(base) ➜ CoolStuffes (main) ✔ ls  // 当前目录的目录结构
+README.md   hammerspoon karabiner  
+
+(base) ➜ CoolStuffes (main) ✗ cp -r ~/.config/karabiner/* ./karabiner  // 将需要上传的内容复制过来
+```
 
