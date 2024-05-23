@@ -38,9 +38,10 @@ grid.MARGINY = 0
 local gw = grid.GRIDWIDTH
 local gh = grid.GRIDHEIGHT
 
-local gomiddle = { x = 1, y = 1, w = 6, h = 6 }
-local gocenter = { x = 1, y = 1, w = 4, h = 4 }
-local gobig = { x = 0, y = 0, w = gw, h = gh }
+-- 以左上角为0,0 gw
+local gomiddle = { x = 0, y = 1, w = gw, h = 6 } -- hyper 2 > 1,1,6,6
+local gocenter = { x = 1, y = 1, w = 4, h = 4 } -- hyper 1
+local gobig = { x = 0, y = 0, w = gw, h = gh } -- hyper 3
 
 -- 中心 小中心 大全屏
 
@@ -75,7 +76,7 @@ local key2App = {
 	-- q = "Termius",
 	q = "Postman",
 	r = "Obsidian",
-	s = "Navicat Premium",
+	s = "Dbeaver",
 	-- s = "System Preferences",
 
 	-- t = "TablePlus", -- t for term
