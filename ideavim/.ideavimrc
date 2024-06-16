@@ -10,7 +10,7 @@ set incsearch
 let mapleader=','
 
 " always use English
-" set keep-english-in-normal
+set keep-english-in-normal
 
 
 nnoremap <C-d> <C-d>zz
@@ -48,10 +48,13 @@ set clipboard+=unnamed
 
 " =============================>, learning lintao
 " =============================>, Plugins
-Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree'
+" Plug 'tpope/vim-surround'
+" Plug 'preservim/nerdtree'
 " Plug 'folke/flash.nvim'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
+set surround
+set NERDTree
+set easymotion
 
 let g:EasyMotion_override_acejump = 0
 
@@ -65,7 +68,7 @@ nmap gm <action>(MethodUp)
 nmap gi <action>(GotoImplementation)
 " last changed in current buffer(file)
 nmap ga '.
-nmap p "_dp
+" nmap p "_dp
 
 " bookmark in whole program
 nmap ma <action>(ToggleBookmark)
@@ -97,8 +100,8 @@ nmap <leader>fl <action>(SelectInProjectView)
 let g:WhichKeyDesc_FindOrFormat_FindText = "<leader>ft FindText"
 nmap <leader>ft <action>(FindInPath)
 
-let g:WhichKeyDesc_FindOrFormat_Commands = "<leader>fc Commands"
-nmap <leader>fc <action>(GotoAction)
+let g:WhichKeyDesc_FindOrFormat_Action = "<leader>fa Action"
+nmap <leader>fa <action>(GotoAction)
 
 let g:WhichKeyDesc_FindOrFormat_OpenedProject = "<leader>fp OpenedProject"
 nmap <leader>fp <action>(OpenProjectWindows)
@@ -123,13 +126,13 @@ let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i InsertAfterBrackets"
 nmap <leader>i f(a
 
 " j: add Semicolon and goto nextline⭐️
-let g:WhichKeyDesc_InsertSemicolon = "<leader>j InsertSemicolon"
-nmap <leader>j A;<ESC>o
+" let g:WhichKeyDesc_InsertSemicolon = "<leader>j InsertSemicolon"
+" nmap <leader>j A;<ESC>o
 
 " l: lsp: Language server protocol (align with neovim)⭐️
-let g:WhichKeyDesc_LSP = "<leader>l LSP"
-let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
-nmap <leader>lr <action>(RenameElement)
+" let g:WhichKeyDesc_LSP = "<leader>l LSP"
+" let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
+" nmap <leader>lr <action>(RenameElement)
 
 
 " n: No ⭐️
@@ -138,18 +141,19 @@ nmap <leader>nl :nohlsearch<CR>
 
 
 " s: Show ⭐️
-" let g:WhichKeyDesc_Show = "<leader>s Show"
+let g:WhichKeyDesc_Show = "<leader>s Show"
 
 " let g:WhichKeyDesc_Show_FileStructure = "<leader>ss ShowFileStructure"
-" nmap <leader>ss <action>(FileStructurePopup)
+nmap <leader>ss <action>(FileStructurePopup)
 
 " let g:WhichKeyDesc_Show_Bookmarks = "<leader>sb ShowBookmarks"
-" nmap <leader>sb <action>(ShowBookmarks)
+nmap <leader>sb <action>(ShowBookmarks)
 " let g:WhichKeyDesc_Show_ParameterInfo = "<leader>sb ShowParameterInfo"
 " nmap <leader>sp <action>(ParameterInfo)
 
 
-""nmap ss <Plug>(easymotion-s2)
+" 启动easymotion s2 当输入两个字符的时候触发
+nmap ss <Plug>(easymotion-s2)
 
 
 " r: Run/Re ⭐️
@@ -163,6 +167,7 @@ map <leader>rn <action>(RenameElement)
 
 " w: Window ⭐️
 let g:WhichKeyDesc_Windows = "<leader>w Windows"
+
 
 let g:WhichKeyDesc_Windows_maximize = "<leader>wo maximize"
 nmap <leader>wo <action>(UnsplitAll) \| <action>(HideAllWindows)
