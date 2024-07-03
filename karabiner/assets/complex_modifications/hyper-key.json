@@ -1,26 +1,20 @@
 {
-  "title": "HYPERKEY: Shift+Ctrl+Command+Optional, author: Lin",
+  "title": "RightCommand : (HYPER) SHIFT+COMMAND+OPTION+CONTROL, author: Lin",
   "rules": [
     {
-      "description": "HYPERKEY: Shift+Ctrl+Command+Optional, author: Lin",
+      "description": "RightCommand : (HYPER) SHIFT+COMMAND+OPTION+CONTROL",
       "manipulators": [
         {
           "from": {
-            "key_code": "caps_lock",
+            "key_code": "right_command",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
             {
               "key_code": "left_shift",
-              "modifiers": [
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
+              "modifiers": ["left_command", "left_control", "left_option"]
             }
           ],
           "type": "basic"
@@ -30,12 +24,7 @@
           "from": {
             "key_code": "comma",
             "modifiers": {
-              "mandatory": [
-                "command",
-                "shift",
-                "option",
-                "control"
-              ]
+              "mandatory": ["command", "shift", "option", "control"]
             }
           },
           "to": [],
@@ -46,12 +35,7 @@
           "from": {
             "key_code": "period",
             "modifiers": {
-              "mandatory": [
-                "command",
-                "shift",
-                "option",
-                "control"
-              ]
+              "mandatory": ["command", "shift", "option", "control"]
             }
           },
           "to": [],
@@ -62,12 +46,7 @@
             "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+/",
             "key_code": "slash",
             "modifiers": {
-              "mandatory": [
-                "command",
-                "shift",
-                "option",
-                "control"
-              ]
+              "mandatory": ["command", "shift", "option", "control"]
             }
           },
           "to": [],
