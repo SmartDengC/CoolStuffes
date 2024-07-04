@@ -54,6 +54,8 @@ README.md   hammerspoon karabiner
 
 karabiner同理，karabiner的配置文件在家目录的`.config`下面.
 
+### 备份 
+
 ```shell
 (base) ➜ CoolStuffes (main) ✔ pwd   // 当前所处的目录
 /Users/dengc4r/c4r_git/CoolStuffes
@@ -62,5 +64,23 @@ karabiner同理，karabiner的配置文件在家目录的`.config`下面.
 README.md   hammerspoon karabiner  
 
 (base) ➜ CoolStuffes (main) ✗ cp -r ~/.config/karabiner/* ./karabiner  // 将需要上传的内容复制过来
+```
+
+### 恢复
+
+同步某一个文件到karabiner配置目录
+
+```shell
+(base) ➜ CoolStuffes (main) ✗ pwd
+/Users/dengc4r/c4r_git/CoolStuffes
+(base) ➜ CoolStuffes (main) ✗ cp -r ./karabiner/assets/complex_modifications/left_shift_2_F17.json ~/.config/karabiner/assets/complex_modifications/
+```
+
+使用github上面文件全部替换本地karabiner配置：
+
+```shell
+(base) ➜ CoolStuffes (main) ✗ pwd
+/Users/dengc4r/c4r_git/CoolStuffes
+(base) ➜ CoolStuffes (main) ✗ cp -r ./karabiner/* ~/.config/karabiner
 ```
 

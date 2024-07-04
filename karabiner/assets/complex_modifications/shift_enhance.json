@@ -1,0 +1,42 @@
+{
+  "title": "Shift : like sougou, use shift to change input methodl, author: dengcong",
+  "rules": [
+    {
+      "description": "shift to change input method",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_shift"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "shift_variable",
+                "value": 1
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "shift_variable",
+                "value": 0
+              }
+            }
+          ],
+          "to_if_alone": [
+            {
+              "description": "如果单独按下的话，就转化成ctrl+space",
+              "key_code": "left_shift",
+              "modifiers": [
+                "left_ctrl",
+                "spacebar"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
