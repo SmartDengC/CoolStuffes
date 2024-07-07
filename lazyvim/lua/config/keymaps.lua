@@ -4,6 +4,8 @@
 --
 --
 
+local keymap = vim.keymap
+
 local Util = require("lazyvim.util")
 
 local function map(mode, lhs, rhs, opts)
@@ -64,3 +66,6 @@ for command, keybinding in pairs(command_keymappings) do
   ::continue::
 end
 vim.keymap.set("n", "<leader>wo", "<c-w>o", { desc = "Maximize window" })
+
+-- 映射快捷键：leader + se to :e %:h
+map("n", "<leader>se", "<Esc>:e %:h<cr>", { desc = "show directory current file" })
