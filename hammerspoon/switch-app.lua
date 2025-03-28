@@ -58,12 +58,12 @@ end)
 -- this part is for open or focus app windows
 local key2App = {
 	a = "Apifox",
-	b = "豆包", -- b for browser
+	-- b = "豆包", -- b for browser
 	c = "Google Chrome", --vscode
 	d = "TablePlus", -- d for dict
 	e = "iTerm2", -- e for editor
-	-- f = "WPS office",
-	-- g = "Google Chrome", -- used --center babe
+	f = "Safari浏览器",
+	g = "网易有道翻译", -- used --center babe
 	-- h = '',
 	i = "IntelliJ IDEA",
 	-- j = "Spotify",
@@ -71,21 +71,21 @@ local key2App = {
 	-- l = 'Dictionary',
 	m = "Messages", -- m for music
 	n = "时钟",
-	o = "Typora", -- used --max babe
+	-- o = "Obsidian", -- used --max babe
 	p = "PyCharm",
 	-- q = "Termius",
-	q = "Postman",
-	r = "Obsidian",
+	-- q = "Postman",
+  r = "Typora",
 	s = "Dbeaver",
 	-- s = "System Preferences",
 
-	-- t = "TablePlus", -- t for term
-	-- u = "WPS office",
+	t = "Obsidian", -- t for term
+	u = "Cursor",
 	v = "Visual Studio Code",
-	w = "WeChat",
+	-- w = "微信",
 	x = "Termius",
 	-- y = 'Dictionary',
-	z = "WPS Office",
+	z = "网易有道翻译",
 }
 
 for key, app in pairs(key2App) do
