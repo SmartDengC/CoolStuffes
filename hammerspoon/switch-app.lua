@@ -75,7 +75,7 @@ local key2App = {
 	p = "PyCharm",
 	-- q = "Termius",
 	-- q = "Postman",
-    r = "Typora",
+	r = "Typora",
 	s = "Dbeaver",
 	-- s = "System Preferences",
 
