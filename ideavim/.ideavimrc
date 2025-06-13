@@ -109,8 +109,8 @@ nmap <leader>fp <action>(OpenProjectWindows)
 let g:WhichKeyDesc_FindOrFormat_Format = "<leader>fm Format"
 nmap <leader>fm <action>(ReformatCode) \| <action>(OptimizeImports)
 
-let g:WhichKeyDesc_Show_FileStructure = "<leader>fs ShowFileStructure"
-nmap <leader>fs <action>(FileStructurePopup)
+let g:WhichKeyDesc_Show_FileStructure = "<leader>fs GotoSymbol"
+nmap <leader>fs <action>(GotoSymbol)
 
 " g: Git ⭐️
 let g:WhichKeyDesc_Git = "<leader>g Git"
