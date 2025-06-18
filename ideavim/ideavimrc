@@ -1,17 +1,23 @@
 source ~/.vimrc
 
-" set easymotion
+" basic config
 set nu
 set autoindent
 set relativenumber
 set hlsearch
 set incsearch
 
+" visual 模式下，重复缩进（未生效）
+vnoremap > >gv
+vnoremap < <gv
+
+" 解决visual选中的情况下只能粘贴一次的问题
+vnoremap p P
+
 let mapleader=','
 
 " always use English
 set keep-english-in-normal
-
 
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
@@ -48,15 +54,18 @@ set clipboard+=unnamed
 
 " =============================>, learning lintao
 " =============================>, Plugins
-" Plug 'tpope/vim-surround'
-" Plug 'preservim/nerdtree'
-" Plug 'folke/flash.nvim'
-" Plug 'easymotion/vim-easymotion'
+set highlightedyank
 set surround
 set NERDTree
-set easymotion
 
+" easymotion
 let g:EasyMotion_override_acejump = 0
+let g:EasyMotion_do_mapping = 0
+set easymotion
+" 简单来说easymotion-s使用一个字符作为标签，easymotion-s2 使用两个字符作为标签
+nmap ss <Plug>(easymotion-s)
+" 启动easymotion s2 当输入两个字符的时候触发
+" nmap ss <Plug>(easymotion-s2)
 
 " 2 Basic Setting
 
@@ -66,6 +75,7 @@ nmap ge <action>(GotoNextError)
 nmap gt <action>(GotoTest)
 nmap gm <action>(MethodUp)
 nmap gi <action>(GotoImplementation)
+nmap gh <action>(QuickJavaDoc)
 " last changed in current buffer(file)
 nmap ga '.
 " nmap p "_dp
@@ -155,10 +165,6 @@ nmap <leader>sb <action>(ShowBookmarks)
 " nmap <leader>sp <action>(ParameterInfo)
 
 
-" 启动easymotion s2 当输入两个字符的时候触发
-nmap ss <Plug>(easymotion-s2)
-
-
 " r: Run/Re ⭐️
 let g:WhichKeyDesc_RunOrRe = "<leader>r RunOrRe"
 let g:WhichKeyDesc_RunOrRe_ReRun = "<leader>rr ReRun"
@@ -171,14 +177,12 @@ map <leader>rn <action>(RenameElement)
 " w: Window ⭐️
 let g:WhichKeyDesc_Windows = "<leader>w Windows"
 
-
 let g:WhichKeyDesc_Windows_maximize = "<leader>wo maximize"
 nmap <leader>wo <action>(UnsplitAll) \| <action>(HideAllWindows)
 
 let g:WhichKeyDesc_Windows_splitWindowVertically = "<leader>wl splitWindowVertically"
 nmap <leader>wl <action>(SplitVertically)
 " nmap <leader>wl <action>(Macro.SplitVertically)
-
 
 let g:WhichKeyDesc_Windows_closeActiveWindow = "<leader>wc closeActiveWindow"
 nmap <leader>wc <c-w>c
@@ -200,7 +204,6 @@ nmap <leader>e <action>(ActivateProjectToolWindow)
 
 " let g:WhichKeyDesc_ActivateDebugToolWindow = "<leader>e ToggleDebug"
 " nmap <leader>ed <action>(ActivateDebugToolWindow)
-
 
 " e: Extract
 " extract method/function
