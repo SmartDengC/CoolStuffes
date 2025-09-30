@@ -62,7 +62,7 @@ end)
 -- this part is for open or focus app windows
 local key2App = {
 	a = "Apifox",
-	-- b = "豆包", -- b for browser
+	b = "图书", -- b for browser
 	c = "Google Chrome", --vscode
 	d = "TablePlus", -- d for dict
 	e = "iTerm2", -- e for editor
