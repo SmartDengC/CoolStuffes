@@ -43,6 +43,7 @@ local gocenter = { x = 1, y = 1, w = 4, h = 4 } -- hyper 1
 local gomiddle = { x = 0, y = 1, w = gw, h = 6 } -- hyper 2 > 1,1,6,6
 local gobig = { x = 0, y = 0, w = gw, h = gh } -- hyper 3
 local gosmiddle = { x = 1.5, y = 2, w = gw, h = 6 } -- hyper 4
+local gomiddledown = { x = 1, y = 2, w = 6, h = 6 } -- hyper 5
 
 -- 中心 小中心 大全屏
 
@@ -58,11 +59,14 @@ end)
 hotkey.bind(hyper, "4", function()
 	grid.set(window.focusedWindow(), gosmiddle)
 end)
+hotkey.bind(hyper, "5", function()
+	grid.set(window.focusedWindow(), gomiddledown)
+end)
 
 -- this part is for open or focus app windows
 local key2App = {
 	a = "Apifox",
-	b = "图书", -- b for browser
+	b = "预览", -- b for browser
 	c = "Google Chrome", --vscode
 	d = "TablePlus", -- d for dict
 	e = "iTerm2", -- e for editor
@@ -80,11 +84,11 @@ local key2App = {
 	-- q = "Termius",
 	-- q = "Postman",
   r = "Typora",
-	s = "Dbeaver",
+	s = "BrokenStation",
 	-- s = "System Preferences",
 
 	t = "Obsidian", -- t for term
-	u = "Cursor",
+	u = "Undercontrol",
 	v = "Visual Studio Code",
 	-- w = "微信",
 	x = "Termius",
