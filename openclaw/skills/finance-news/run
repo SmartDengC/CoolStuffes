@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# Finance News Skill for OpenClaw
+# Fetches latest finance/business news from Sina
+
+get_stock_news() {
+    local url="https://finance.sina.com.cn/stock/"
+    local response=$(curl -s --connect-timeout 15 "$url" 2>/dev/null)
+    
+    if [[ -z "$response" ]]; then
+        echo "❌ 无法获取财经新闻，请稍后重试"
+        return 1
+    fi
+    
+    echo "## 📰 财经要闻"
+    echo ""
+    
+    echo "$response" | grep -oE 'title="[^"]+' 2>/dev/null | \
+        sed 's/title="//g' | \
+        sed 's/&amp;/\&/g' | \
+        grep -E '.{10,50}' | \
+        head -10
+    
+    echo ""
+    echo "---"
+    echo "*数据来源: 新浪财经*"
+}
+
+get_market_news() {
+    local url="https://finance.sina.com.cn/money/"
+    local response=$(curl -s --connect-timeout 15 "$url" 2>/dev/null)
+    
+    if [[ -z "$response" ]]; then
+        echo "❌ 无法获取市场新闻，请稍后重试"
+        return 1
+    fi
+    
+    echo "## 📈 市场新闻"
+    echo ""
+    
+    echo "$response" | grep -oE 'title="[^"]+' 2>/dev/null | \
+        sed 's/title="//g' | \
+        sed 's/&amp;/\&/g' | \
+        grep -E '.{10,50}' | \
+        head -10
+    
+    echo ""
+    echo "---"
+    echo "*数据来源: 新浪财经*"
+}
+
+get_macro_news() {
+    local url="https://finance.sina.com.cn/macro/"
+    local response=$(curl -s --connect-timeout 15 "$url" 2>/dev/null)
+    
+    if [[ -z "$response" ]]; then
+        echo "❌ 无法获取宏观新闻，请稍后重试"
+        return 1
+    fi
+    
+    echo "## 📊 宏观要闻"
+    echo ""
+    
+    echo "$response" | grep -oE 'title="[^"]+' 2>/dev/null | \
+        sed 's/title="//g' | \
+        sed 's/&amp;/\&/g' | \
+        grep -E '.{10,50}' | \
+        head -10
+    
+    echo ""
+    echo "---"
+    echo "*数据来源: 新浪财经*"
+}
+
+show_usage() {
+    echo "## 📰 财经新闻"
+    echo ""
+    echo "发送关键词获取新闻:"
+    echo "- 新闻: 财经要闻"
+    echo "- 市场: 市场新闻"
+    echo "- 宏观: 宏观要闻"
+}
+
+TYPE="$1"
+
+case "$TYPE" in
+    市场)
+        get_market_news
+        ;;
+    宏观)
+        get_macro_news
+        ;;
+    ""|新闻|财经)
+        get_stock_news
+        ;;
+    *)
+        get_stock_news
+        ;;
+esac

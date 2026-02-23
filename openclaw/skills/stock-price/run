@@ -1,0 +1,150 @@
+#!/bin/bash
+
+# Stock Price Skill for OpenClaw
+# Fetches real-time stock prices from East Money API
+
+get_china_stock() {
+    local symbol=$1
+    local url="https://push2.eastmoney.com/api/qt/stock/get?fltt=2&invt=2&fields=f43,f44,f45,f46,f47,f48,f50,f51,f52,f57,f58,f59,f60,f116,f117,f162,f167,f168,f169,f170,f171,f173,f177&secid=${symbol}"
+    local response=$(curl -s --connect-timeout 10 "$url")
+    
+    if [[ -z "$response" ]]; then
+        echo "❌ 无法获取数据，请稍后重试"
+        return 1
+    fi
+    
+    local rc=$(echo "$response" | grep -o '"rc":[0-9]*' | cut -d':' -f2)
+    if [[ "$rc" != "0" ]]; then
+        echo "❌ 股票代码无效: $symbol"
+        return 1
+    fi
+    
+    local data=$(echo "$response" | grep -o '"data":{[^}]*}' | head -1)
+    
+    if [[ -z "$data" ]]; then
+        echo "❌ 股票代码无效: $symbol"
+        return 1
+    fi
+    
+    local name=$(echo "$data" | grep -o '"f58":"[^"]*"' | cut -d'"' -f4)
+    local code=$(echo "$data" | grep -o '"f57":"[^"]*"' | cut -d'"' -f4)
+    local current=$(echo "$data" | grep -o '"f43":[0-9.]*' | cut -d':' -f2)
+    local open=$(echo "$data" | grep -o '"f46":[0-9.]*' | cut -d':' -f2)
+    local high=$(echo "$data" | grep -o '"f44":[0-9.]*' | cut -d':' -f2)
+    local low=$(echo "$data" | grep -o '"f45":[0-9.]*' | cut -d':' -f2)
+    local close=$(echo "$data" | grep -o '"f60":[0-9.]*' | cut -d':' -f2)
+    local volume=$(echo "$data" | grep -o '"f47":[0-9.]*' | cut -d':' -f2)
+    local amount=$(echo "$data" | grep -o '"f48":[0-9.]*' | cut -d':' -f2)
+    local change=$(echo "$data" | grep -o '"f170":[0-9.-]*' | cut -d':' -f2)
+    local change_pct=$(echo "$data" | grep -o '"f171":[0-9.-]*' | cut -d':' -f2)
+    
+    if [[ -n "$volume" && "$volume" != "0" ]]; then
+        volume=$(echo "$volume" | awk '{printf "%.2f", $1/10000}')
+        volume="${volume}万手"
+    else
+        volume="-"
+    fi
+    
+    if [[ -n "$amount" && "$amount" != "0" ]]; then
+        amount=$(echo "$amount" | awk '{printf "%.2f", $1/100000000}')
+        amount="${amount}亿"
+    else
+        amount="-"
+    fi
+    
+    local emoji="➡️"
+    if [[ -n "$change" ]]; then
+        if (( $(echo "$change > 0" | bc -l 2>/dev/null) )); then
+            emoji="📈"
+        elif (( $(echo "$change < 0" | bc -l 2>/dev/null) )); then
+            emoji="📉"
+        fi
+    fi
+    
+    echo "## $emoji $name ($code)"
+    echo ""
+    echo "| 项目 | 数值 |"
+    echo "|-----|------|"
+    echo "| 当前价格 | **¥$current** |"
+    echo "| 涨跌额 | ¥$change |"
+    echo "| 涨跌幅 | $change_pct% |"
+    echo "| 开盘价 | ¥$open |"
+    echo "| 最高价 | ¥$high |"
+    echo "| 最低价 | ¥$low |"
+    echo "| 昨收价 | ¥$close |"
+    echo "| 成交量 | $volume |"
+    echo "| 成交额 | $amount |"
+}
+
+get_hk_stock() {
+    local symbol=$1
+    local url="https://push2.eastmoney.com/api/qt/stock/get?fltt=2&fields=f43,f44,f45,f46,f47,f48,f50,f51,f52,f57,f58,f59,f60,f116,f117,f162,f167,f168,f169,f170,f171,f173,f177&secid=116.${symbol}"
+    local response=$(curl -s --connect-timeout 10 "$url")
+    
+    if [[ -z "$response" ]]; then
+        echo "❌ 无法获取数据，请稍后重试"
+        return 1
+    fi
+    
+    local data=$(echo "$response" | grep -o '"data":{[^}]*}' | head -1)
+    
+    if [[ -z "$data" ]]; then
+        echo "❌ 股票代码无效: $symbol"
+        return 1
+    fi
+    
+    local name=$(echo "$data" | grep -o '"f58":"[^"]*"' | cut -d'"' -f4)
+    local current=$(echo "$data" | grep -o '"f43":[0-9.]*' | cut -d':' -f2)
+    local open=$(echo "$data" | grep -o '"f46":[0-9.]*' | cut -d':' -f2)
+    local high=$(echo "$data" | grep -o '"f44":[0-9.]*' | cut -d':' -f2)
+    local low=$(echo "$data" | grep -o '"f45":[0-9.]*' | cut -d':' -f2)
+    local change=$(echo "$data" | grep -o '"f170":[0-9.-]*' | cut -d':' -f2)
+    local change_pct=$(echo "$data" | grep -o '"f171":[0-9.-]*' | cut -d':' -f2)
+    
+    local emoji="➡️"
+    if [[ -n "$change" ]]; then
+        if (( $(echo "$change > 0" | bc -l 2>/dev/null) )); then
+            emoji="📈"
+        elif (( $(echo "$change < 0" | bc -l 2>/dev/null) )); then
+            emoji="📉"
+        fi
+    fi
+    
+    echo "## $emoji $name ($symbol.HK)"
+    echo ""
+    echo "| 项目 | 数值 |"
+    echo "|-----|------|"
+    echo "| 当前价格 | **HK\$$current** |"
+    echo "| 涨跌额 | HK\$$change |"
+    echo "| 涨跌幅 | $change_pct% |"
+    echo "| 开盘价 | HK\$$open |"
+    echo "| 最高价 | HK\$$high |"
+    echo "| 最低价 | HK\$$low |"
+}
+
+show_usage() {
+    echo "## 📈 股票行情查询"
+    echo ""
+    echo "请输入股票代码查询行情"
+    echo ""
+    echo "支持: A股(600519, 000001), 港股(00700.HK)"
+}
+
+if [ -z "$1" ]; then
+    show_usage
+    exit 0
+fi
+
+SYMBOL=$(echo "$1" | tr '[:lower:]' '[:upper:]' | sed 's/\.HK//g')
+
+case "$SYMBOL" in
+    600*|601*|603*|605*|688*|700*|800*)
+        get_china_stock "1.${SYMBOL}"
+        ;;
+    000*|001*|002*|003*|300*)
+        get_china_stock "0.${SYMBOL}"
+        ;;
+    *)
+        get_hk_stock "$SYMBOL"
+        ;;
+esac
