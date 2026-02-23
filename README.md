@@ -1,83 +1,84 @@
-# Share my CoolStuffes
-仓库中保存了一些是我在工作中高效率的配置，也可以叫做工作流，例如karabiner、hammerspoon、ideavim。
+# CoolStuffes - 高效工作流配置
 
-如果有什么问题，欢迎大家指出。
+> 一套提升 macOS 开发效率的个人配置集合
 
-### 一、备份与恢复Hammerspoon的配置
+## 简介
 
-#### 1.1、备份Hammerspoon配置
+本仓库收录了我在日常开发中使用的高效率配置文件，涵盖键盘映射、窗口管理、编辑器配置、Shell 环境等多个方面。
 
-hammerspoon的配置文件在目录`.hammerspoon`下面，备份与恢复的时候只需要把这个文件下面的所有内容拷贝或者替换掉就可以。
+## 目录结构
 
-我们首先切换到仓库的主目录，ls查看目录下面的文件夹：
-
-```shell
-(base) ➜ CoolStuffes (main) ✗ cd /Users/dengc4r/c4r_git/CoolStuffes
-(base) ➜ CoolStuffes (main) ✗ ls
-README.md   hammerspoon karabiner
+```
+CoolStuffes/
+├── hammerspoon/     # macOS 自动化工具
+├── karabiner/       # 键盘映射
+├── lazyvim/         # Neovim 配置
+├── ideavim/         # JetBrains IDE Vim 插件配置
+├── zsh/             # Zsh 配置
+├── opencode/        # OpenCode AI 助手配置
+└── openclaw/       # OpenClaw 自定义技能
 ```
 
-直接将.hammerspoon下面的所有内容都拷贝到仓库的主目录下面，然后在提交。
+## 功能特性
 
-```shell
+| 工具 | 说明 |
+|------|------|
+| **Hammerspoon** | macOS 自动化脚本，包括应用快速切换、窗口管理等 |
+| **Karabiner** | 键盘映射规则，自定义 Hyper Key、增强修饰键等 |
+| **LazyVim** | Neovim 发行版配置，开箱即用的 IDE 体验 |
+| **IDEAVim** | JetBrains IDE 的 Vim 模拟配置 |
+| **Zsh** | Shell 环境配置，包含 oh-my-zsh 自定义 |
+| **OpenCode** | OpenCode AI 助手的模型和提供商配置 |
+| **OpenClaw** | 自定义技能（金融资讯、股票价格查询） |
+
+## 快速开始
+
+### 部署配置
+
+```bash
+# 克隆仓库
+git clone https://github.com/yourusername/CoolStuffes.git
+cd CoolStuffes
+
+# 部署 Hammerspoon
+cp -r ./hammerspoon/* ~/.hammerspoon
+
+# 部署 Karabiner
+cp -r ./karabiner/* ~/.config/karabiner
+
+# 部署 LazyVim
+cp -r ./lazyvim ~/.config/nvim
+
+# 部署 zsh
+cp ./zsh/zshrc ~/.zshrc
+
+# 部署 IDEAVim
+cp ./ideavim/ideavimrc ~/.ideavimrc
+```
+
+### 备份配置
+
+```bash
+# 备份到仓库
 cp -r ~/.hammerspoon/* ./hammerspoon
+cp -r ~/.config/karabiner/* ./karabiner
+cp -r ~/.config/nvim/* ./lazyvim
 ```
 
-上面部分我们还是使用的相对路径，这里我们也可以直接使用绝对路径来操作：
+## 配置验证
 
-```shell
-cp -r ~/.hammerspoon/* /Users/dengc4r/c4r_git/CoolStuffes/hammerspoon
+### JSON 文件
+```bash
+python3 -m json.tool karabiner/karabiner.json > /dev/null
+python3 -m json.tool opencode/opencode.json > /dev/null
 ```
 
-#### 1.2、恢复Hammerspoon配置
-
-操作会将文件拷贝到Hammerspoon的主目录下，操作前建议将原文件夹进行备份。
-
-```shell
-(base) ➜ ~ cp -r ~/.hammerspoon ~/.hammerspoon-bak
+### Lua 文件
+```bash
+luac -p hammerspoon/init.lua
+luac -p lazyvim/init.lua
 ```
 
-在仓库主目录拉取Github代码之后，就在当前目录上将Hammerspoon里面的所有文件拷贝到本地目录的Hammerspoon文件夹里面。
+## 许可证
 
-```shell
-(base) ➜ c4r_git cd CoolStuffes
-(base) ➜ CoolStuffes (main) ✔ ls
-README.md   hammerspoon ideavim     karabiner   lazyvim     zsh
-(base) ➜ CoolStuffes (main) ✔ cp -r ./hammerspoon/* ~/.hammerspoon
-```
-
-### 二、备份与恢复karabiner的配置
-
-karabiner同理，karabiner的配置文件在家目录的`.config`下面.
-
-#### 2.1、备份karabiner的配置
-
-```shell
-(base) ➜ CoolStuffes (main) ✔ pwd   // 当前所处的目录
-/Users/dengc4r/c4r_git/CoolStuffes
-
-(base) ➜ CoolStuffes (main) ✔ ls  // 当前目录的目录结构
-README.md   hammerspoon karabiner  
-
-(base) ➜ CoolStuffes (main) ✗ cp -r ~/.config/karabiner/* ./karabiner  // 将需要上传的内容复制过来
-```
-
-#### 2.2、恢复karabiner的配置
-
-同步某一个文件到karabiner配置目录
-
-```shell
-(base) ➜ CoolStuffes (main) ✗ pwd
-/Users/dengc4r/c4r_git/CoolStuffes
-(base) ➜ CoolStuffes (main) ✗ cp -r ./karabiner/assets/complex_modifications/left_shift_2_F17.json ~/.config/karabiner/assets/complex_modifications/
-```
-
-使用github上面文件全部替换本地karabiner配置：
-
-```shell
-(base) ➜ c4r_git cd CoolStuffes
-(base) ➜ CoolStuffes (main) ✗ pwd
-/Users/dengc4r/c4r_git/CoolStuffes
-(base) ➜ CoolStuffes (main) ✗ cp -r ./karabiner/* ~/.config/karabiner
-```
-
+MIT License
