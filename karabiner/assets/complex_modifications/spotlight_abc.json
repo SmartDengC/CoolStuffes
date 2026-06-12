@@ -1,0 +1,33 @@
+{
+  "title": "Spotlight 唤起时切换到 ABC 英文输入法",
+  "rules": [
+    {
+      "description": "Cmd+Space: 先切换到 ABC，再打开 Spotlight",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": ["command"],
+              "optional": ["caps_lock"]
+            }
+          },
+          "to": [
+            {
+              "select_input_source": {
+                "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
+              }
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "key_code": "spacebar",
+              "modifiers": ["left_command"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
