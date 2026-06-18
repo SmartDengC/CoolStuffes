@@ -18,12 +18,9 @@
               "select_input_source": {
                 "input_source_id": "^com\\.apple\\.keylayout\\.ABC$"
               }
-            }
-          ],
-          "to_after_key_up": [
+            },
             {
-              "key_code": "spacebar",
-              "modifiers": ["left_command"]
+              "apple_vendor_keyboard_key_code": "spotlight"
             }
           ]
         }
