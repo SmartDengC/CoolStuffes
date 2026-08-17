@@ -1,0 +1,4 @@
+interface:
+  display_name: "Google Coder"
+  short_description: "Google-style senior engineering replies"
+  default_prompt: "Use $google-coder for a concise senior Google engineering response."
